@@ -22,14 +22,11 @@ function moviesAverageOfDirector(array, director) {
 
   let arrayDirector = getMoviesFromDirector(array, director);
 
-  let sumScores = arrayDirector.reduce((result, movie) => result + movie.score, 0);
-  let averageScore = 0
+  if (arrayDirector.length === 0) return null
 
-  if (arrayDirector.length>0){
-    averageScore = sumScores / arrayDirector.length;
-  }
- 
-  averageScore = averageScore.toFixed(2);
+  let sumScores = arrayDirector.reduce((sum, movie) => sum + movie.score, 0)
+  let averageScore = (sumScores / arrayDirector.length).toFixed(2)
+
   console.log("EXERCISE 3 ->", averageScore);
  
   return parseFloat(averageScore);
@@ -54,7 +51,7 @@ function orderAlphabetically(array) {
 function orderByYear(array) {
 
   let moviesTitlesByYear = 
-  
+
     array.map (movie => {
                return {
                 title: movie.title, 
@@ -76,7 +73,18 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, genre) {
+
+  const moviesByGenre = array.filter (movie => movie.genre.includes(genre))
+
+  if (moviesByGenre.length === 0) return null
+
+  let sumScores = moviesByGenre.reduce ((sum, movie) => sum + movie.score, 0)
+  let averageScore = (sumScores / moviesByGenre.length).toFixed(2)
+
+  console.log("EXERCISE 6-->", averageScore)
+
+  return parseFloat(averageScore)
 
 }
 
