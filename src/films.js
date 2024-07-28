@@ -88,10 +88,65 @@ function moviesAverageByCategory(array, genre) {
 
 }
 
+/*
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+
+  const arrayMinuts = array
+  arrayMinuts.map(movie => movie.duration = convertsDurationToMinutes(movie.duration))
+
+  console.log("EXERCISE 7-->", arrayMinuts)
+
+  return arrayMinuts
 
 }
+
+function convertsDurationToMinutes(duration){
+
+  let newDuration = duration.split(' ')
+
+  let hours = parseInt(newDuration.find(e => e.includes('h')))
+  let minutes = parseInt(newDuration.find(e => e.includes('min')))
+
+  if (isNaN(hours)){ hours=0}
+  if (isNaN(minutes)){ minutes=0}
+  
+  let totalMinutes = hours*60 + minutes
+
+  console.log(duration,hours,minutes)
+
+  return totalMinutes
+ 
+}*/
+
+// Exercise 7: Modify the duration of movies to minutes
+function hoursToMinutes(array) {
+
+  const arrayMinutes = array.map(movie => ({ ...movie, duration: convertDurationToMinutes(movie.duration)}));
+
+  console.log("EXERCISE 7-->", arrayMinutes);
+
+  return arrayMinutes;
+}
+
+function convertDurationToMinutes(duration) {
+
+  if (typeof duration !== 'string') return null
+
+  let newDuration = duration.split(' ');
+
+  let hours = parseInt(newDuration.find(e => e.includes('h')));
+  let minutes = parseInt(newDuration.find(e => e.includes('min')));
+
+  if (isNaN(hours)) { hours = 0; }
+  if (isNaN(minutes)) { minutes = 0; }
+
+  let totalMinutes = hours * 60 + minutes;
+
+  return totalMinutes;
+}
+
+
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
